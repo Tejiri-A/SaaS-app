@@ -1,3 +1,5 @@
+import { ClerkProvider } from "@clerk/nextjs";
+import { shadcn } from "@clerk/ui/themes";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Inter } from "next/font/google";
 import "./globals.css";
@@ -24,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", inter.variable)}>
       <body className={`${bricolage.variable} antialiased`}>
-        <Navbar />
-        {children}
+        <ClerkProvider appearance={{ theme: shadcn }}>
+          <Navbar />
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
